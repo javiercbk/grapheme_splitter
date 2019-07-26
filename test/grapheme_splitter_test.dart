@@ -80,12 +80,12 @@ void main() {
     });
 
     test('iterateGraphemes returns properly split iterator from string',
-        () async {
+        () {
       final splitter = new GraphemeSplitter();
-      await testData.forEach((inputExpected) async {
+      testData.forEach((inputExpected) {
         final input = inputExpected.input;
         final expected = inputExpected.expected;
-        final result = await splitter.iterateGraphemes(input).toList();
+        final result = splitter.iterateGraphemes(input).toList();
         expect(result, equals(expected));
       });
     });

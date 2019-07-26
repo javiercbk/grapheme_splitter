@@ -2254,7 +2254,7 @@ class GraphemeSplitter {
   }
 
   /// iterateGraphemes returns the iterator of grapheme clusters there are in the given string
-  Stream<String> iterateGraphemes(String str) async* {
+  Iterable<String> iterateGraphemes(String str) sync* {
     int index = 0;
     String value;
     int brk;

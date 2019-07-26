@@ -1,5 +1,5 @@
 name: grapheme_splitter
-version: 0.0.1
+version: 1.0.0
 author: Javier Lecuona <javierlecuona@gmail.com>
 description: A Dart library that breaks strings into their individual user-perceived characters.
 homepage: https://github.com/javiercbk/grapheme_splitter
