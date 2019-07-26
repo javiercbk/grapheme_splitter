@@ -1,5 +1,5 @@
 import 'dart:io';
-import "package:path/path.dart" show dirname, join, normalize;
+import 'package:path/path.dart' show dirname, join, normalize;
 import 'package:test/test.dart';
 import '../lib/grapheme_splitter.dart';
 

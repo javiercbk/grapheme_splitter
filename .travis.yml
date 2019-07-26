@@ -1,0 +1,28 @@
+language: dart
+sudo: false
+
+dart:
+  - dev
+
+jobs:
+  include:
+    # First, check that everything analyzes properly and is formatted.
+    - stage: analyze_and_format
+      script:
+        - dartanalyzer --fatal-warnings .
+        - dartfmt -n --set-exit-if-changed .
+    # Set up several jobs in the next stage, using the built in sharding
+    # feature from the `test` package.
+    - stage: unit_test
+      script:
+        - pub run test
+
+# Specify the ordering of your stages
+stages:
+  - analyze_and_format
+  - unit_test
+
+cache:
+  directories:
+    - $HOME/.pub-cache
+    - .dart_tool/build
