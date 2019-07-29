@@ -79,8 +79,7 @@ void main() {
       });
     });
 
-    test('iterateGraphemes returns properly split iterator from string',
-        () {
+    test('iterateGraphemes returns properly split iterator from string', () {
       final splitter = new GraphemeSplitter();
       testData.forEach((inputExpected) {
         final input = inputExpected.input;
