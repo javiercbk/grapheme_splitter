@@ -3,17 +3,6 @@ import 'package:path/path.dart' show dirname, join, normalize;
 import 'package:test/test.dart';
 import '../lib/grapheme_splitter.dart';
 
-String _scriptPath() {
-  var script = Platform.script.toString();
-  if (script.startsWith("file://")) {
-    script = script.substring(7);
-  } else {
-    final idx = script.indexOf("file:/");
-    script = script.substring(idx + 5);
-  }
-  return script;
-}
-
 int zeroFillRightShift(int n, int amount) {
   return (n & 0xffffffff) >> amount;
 }
@@ -59,9 +48,7 @@ _InputExpected testDataFromLine(String line) {
 
 void main() {
   group("grapheme splitter", () {
-    final currentDirectory = dirname(_scriptPath());
-    final jsonPath = normalize(join(currentDirectory, "GraphemeBreakTest.txt"));
-    final testData = new File(jsonPath)
+    final testData = new File('test_resources/GraphemeBreakTest.txt')
         .readAsStringSync()
         .split("\n")
         .where(

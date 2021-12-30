@@ -44,7 +44,7 @@ bool isSurrogate(String str, int pos) {
 
 /// codePointAt gets a Unicode code point from a JavaScript UTF-16 string
 /// handling surrogate pairs appropriately
-int codePointAt(String str, [int idx]) {
+int codePointAt(String str, [int? idx]) {
   if (idx == null) {
     idx = 0;
   }
@@ -2210,7 +2210,7 @@ int getGraphemeBreakProperty(int code) {
 
 class GraphemeSplitter {
   /// nextBreak returns the next grapheme break in the string after the given index
-  int nextBreak(String string, [int index]) {
+  int nextBreak(String string, [int? index]) {
     if (index == null) {
       index = 0;
     }
@@ -2221,7 +2221,7 @@ class GraphemeSplitter {
       return string.length;
     }
     final prev = getGraphemeBreakProperty(codePointAt(string, index));
-    final mid = new List<int>();
+    final mid = <int>[];
     for (int i = index + 1; i < string.length; i++) {
       // check for already processed low surrogates
       if (isSurrogate(string, i - 1)) {
@@ -2240,7 +2240,7 @@ class GraphemeSplitter {
 
   /// splitGraphemes Breaks the given string into an array of grapheme cluster strings
   Iterable<String> splitGraphemes(String str) {
-    final res = new List<String>();
+    final res = <String>[];
     var index = 0;
     var brk;
     while ((brk = this.nextBreak(str, index)) < str.length) {
